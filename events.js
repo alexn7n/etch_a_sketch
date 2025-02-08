@@ -21,7 +21,7 @@ resetButtonElement.addEventListener("click", () => {
   resetCanvas();
 });
 
-function inputCanvasSize() {
+function getCanvasSize() {
     squaresPerSide = prompt("How many squares per side?");
     if (squaresPerSide < 100 && squaresPerSide > 0) {
     createCanvas(squaresPerSide);
