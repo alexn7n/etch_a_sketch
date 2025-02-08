@@ -1,25 +1,66 @@
+@font-face {
+  font-family: "Walsheim";
+  src: url("./fonts/GT Walsheim Pro Regular Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Walsheim";
+  src: url("./fonts/GT-Walsheim-Pro-Black.ttf") format("truetype");
+  font-weight: 900;
+}
+
+h1 {
+  font-family: "Walsheim", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+button {
+    cursor: pointer;
+    font-family: "Walsheim";
+    font-weight: 400;
+    font-size: 16px;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 0;
+    padding: 10px 16px 10px 16px;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+}
 
 .page-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
 
 #container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+  border: 2px solid black;
 }
 
-#square {
-    box-sizing: border-box;
-    display: flex;
-    background-color: white;
-    border: 0.5px solid rgb(235, 235, 235);
+.square {
+  box-sizing: border-box;
+  display: flex;
+  border: 0.5px solid white;
+  background-color: #dbdbdb;
+  aspect-ratio: 1 / 1;
 }
 
-#square:hover {
-    background-color: rgb(36, 36, 36);
+.active {
+  background-color: black;
 }

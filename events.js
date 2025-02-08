@@ -1,20 +1,39 @@
+
+//Variables
+const INITIAL_SIZE = 16;
+let squaresPerSide = INITIAL_SIZE;
+
+//DOM elements
 const containerElement = document.querySelector("#container");
-const sizeButtonElement = document.querySelector("#size-button")
+const sizeButtonElement = document.querySelector("#size-button");
+const resetButtonElement = document.querySelector("#reset-button");
 
-let squaresPerSide = 16;
-
+//Page load
 window.onload = function() {
   createCanvas();
 };
 
-sizeButtonElement.addEventListener('click', handleClickEvent);
+sizeButtonElement.addEventListener("click", () => {
+  inputCanvasSize();
+});
 
-function handleClickEvent() {
+function inputCanvasSize() {
     clearCanvas();
     squaresPerSide = prompt("How many squares per side?");
     if (squaresPerSide < 100 && squaresPerSide > 0) {
     createCanvas(squaresPerSide);
+    attachMouseEnterListeners();
     } else alert("enter a number between 1 and 100");
+}
+
+resetButtonElement.addEventListener("click", () => {
+  resetCanvas();
+});
+
+function resetCanvas() {
+  clearCanvas()
+  squaresPerSide = INITIAL_SIZE;
+  createCanvas();
 }
 
 function clearCanvas() {
@@ -28,12 +47,22 @@ function createCanvas() {
 
 for (let i = 0; i < canvasSize; i++) {
     const squareElement = document.createElement("div");
-    squareElement.setAttribute("id", "square");
+    squareElement.classList.add("square");
     squareElement.style.flexBasis = `${squareSize}%`;
-    squareElement.style.aspectRatio = "1 / 1";
-    containerElement.appendChild(squareElement.cloneNode(true));
+    containerElement.appendChild(squareElement);
   }
 }
+
+function attachMouseEnterListeners() {
+  const squares = document.querySelectorAll(".square");
+  squares.forEach((square) => {
+    square.addEventListener("mouseenter", () => {
+      square.target.classList.add("active");
+    });
+  });
+}
+
+
 
 
 
