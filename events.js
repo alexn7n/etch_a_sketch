@@ -14,21 +14,19 @@ window.onload = function() {
 };
 
 sizeButtonElement.addEventListener("click", () => {
-  inputCanvasSize();
+  getCanvasSize();
 });
-
-function inputCanvasSize() {
-    clearCanvas();
-    squaresPerSide = prompt("How many squares per side?");
-    if (squaresPerSide < 100 && squaresPerSide > 0) {
-    createCanvas(squaresPerSide);
-    attachMouseEnterListeners();
-    } else alert("enter a number between 1 and 100");
-}
 
 resetButtonElement.addEventListener("click", () => {
   resetCanvas();
 });
+
+function inputCanvasSize() {
+    squaresPerSide = prompt("How many squares per side?");
+    if (squaresPerSide < 100 && squaresPerSide > 0) {
+    createCanvas(squaresPerSide);
+    } else alert("enter a number between 1 and 100");
+}
 
 function resetCanvas() {
   clearCanvas()
@@ -40,7 +38,7 @@ function clearCanvas() {
   containerElement.innerHTML = '';
 }
 
-function createCanvas() {
+function setCanvasSize() {
 
   const squareSize = 100 / squaresPerSide;
   const canvasSize = squaresPerSide * squaresPerSide;
@@ -53,14 +51,23 @@ for (let i = 0; i < canvasSize; i++) {
   }
 }
 
-function attachMouseEnterListeners() {
-  const squares = document.querySelectorAll(".square");
-  squares.forEach((square) => {
+function addEventListeners() {
+  let squareElements = document.querySelectorAll(".square");
+
+  squareElements.forEach(square => {
     square.addEventListener("mouseenter", () => {
-      square.target.classList.add("active");
+      square.classList.add("active");
     });
   });
 }
+
+function createCanvas() {
+  clearCanvas();
+  setCanvasSize();
+  addEventListeners();
+}
+
+
 
 
 
